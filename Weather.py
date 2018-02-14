@@ -16,25 +16,29 @@ async def on_ready():
     print("="*20)
 @client.event
 async def on_message(message):
-    global w
+    global w #To Do: 전역 변수 말고 다른 방법은 없을까
     if message.content.startswith('!날씨'):
-        a = requestCurrentWeather('강원', '원주시', '신림면')
+        requestCurrentWeather('강원', '원주시', '신림면')
         print("질문 '!날씨'를 요청받았다.")
         await client.send_message(message.channel, '현재 강원도 원주시 신림면의 날씨는\n' + w + '\n입니다.')
+        #To Do: 입력받은 지역의 좌표나 이름을 통해 그 지역의 현재 날씨를 알려주는 기능
 
 
 
-
+        
+# 아래 소스코드의 원본은
+# https://blog.naver.com/chandong83/221144142343
+# 여기입니다.
             
 # appKey는
 # https://developers.sktelecom.com/
 # 여기에서 받을 수 있다.
-appKey = "68321238-d789-440f-9751-f1181e1e6237"
+appKey = "(발급받은 appKey를 써주세요)"
 
 # 현재 날씨(시간별) 요청 URL
-# 일일 사용 제한 횟수에 따라 분별대신 시간별을 사용함.
 url_hourly = "https://api2.sktelecom.com/weather/current/hourly"
-# 현재 날씨(분별) 요청 URL 이건 그냥 장식
+# 현재 날씨(분별) 요청 URL 
+# 소스코드를 그대로 퍼오느라 사실상 이건 그냥 장식
 url_minutely = "http://api2.sktelecom.com/weather/current/minutely"
 
 # 헤더
@@ -267,4 +271,4 @@ def requestCurrentWeather(city, county, village, isHourly = True):
 
 
 
-client.run('Mzk1NDgzNDEyMzAwODI0NTc2.DSTi2w.S7rxqzwuu_356ieRqW3TK9EsB4s')
+client.run('(발급받은 디스코드 봇 토큰을 입력해주세요)')
